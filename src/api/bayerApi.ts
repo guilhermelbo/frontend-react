@@ -8,10 +8,12 @@ import type {
   PendingActionResponse,
   ApiError,
 } from '../types/bayer';
+import { mockDeliveryApi, mockPendingListApi } from './mockApi';
 
 // Configure the base URL for the Bayer microservice
 // In production, this should come from environment variables
 const API_BASE_URL = import.meta.env.VITE_BAYER_API_URL || 'http://localhost:8080/api';
+const USE_MOCK_API = import.meta.env.VITE_USE_MOCK_API !== 'false'; // Default to true
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -55,6 +57,9 @@ export const deliveryApi = {
    * Create a new delivery with the given balance ID
    */
   createDelivery: async (request: CreateDeliveryRequest): Promise<CreateDeliveryResponse> => {
+    if (USE_MOCK_API) {
+      return mockDeliveryApi.createDelivery(request);
+    }
     const response = await apiClient.post<CreateDeliveryResponse>('/deliveries', request);
     return response.data;
   },
@@ -63,6 +68,9 @@ export const deliveryApi = {
    * Get all deliveries
    */
   getAllDeliveries: async (): Promise<Delivery[]> => {
+    if (USE_MOCK_API) {
+      return mockDeliveryApi.getAllDeliveries();
+    }
     const response = await apiClient.get<Delivery[]>('/deliveries');
     return response.data;
   },
@@ -71,6 +79,9 @@ export const deliveryApi = {
    * Get a specific delivery by ID
    */
   getDeliveryById: async (id: string): Promise<Delivery> => {
+    if (USE_MOCK_API) {
+      return mockDeliveryApi.getDeliveryById(id);
+    }
     const response = await apiClient.get<Delivery>(`/deliveries/${id}`);
     return response.data;
   },
@@ -82,6 +93,9 @@ export const pendingListApi = {
    * Get the pending list with pagination
    */
   getPendingList: async (page = 1, pageSize = 10): Promise<PendingListResponse> => {
+    if (USE_MOCK_API) {
+      return mockPendingListApi.getPendingList(page, pageSize);
+    }
     const response = await apiClient.get<PendingListResponse>('/pending-list', {
       params: { page, pageSize },
     });
@@ -92,6 +106,9 @@ export const pendingListApi = {
    * Execute an action on a pending item
    */
   executePendingAction: async (request: PendingActionRequest): Promise<PendingActionResponse> => {
+    if (USE_MOCK_API) {
+      return mockPendingListApi.executePendingAction(request);
+    }
     const response = await apiClient.post<PendingActionResponse>(
       `/pending-list/${request.itemId}/action`,
       {

@@ -47,7 +47,18 @@ cp .env.example .env
 2. Configure a URL do microserviço Bayer no arquivo `.env`:
 ```env
 VITE_BAYER_API_URL=http://localhost:8080/api
+VITE_USE_MOCK_API=true
 ```
+
+### Modo Mock (Padrão)
+
+Por padrão, a aplicação usa uma **API mockada** com dados fictícios, permitindo testar todas as funcionalidades sem precisar do microserviço real. Isso é ideal para desenvolvimento e demonstrações.
+
+Para usar a API real do microserviço Bayer, altere no arquivo `.env`:
+```env
+VITE_USE_MOCK_API=false
+```
+
 
 ## 🏃 Executando o Projeto
 
