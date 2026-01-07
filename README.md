@@ -68,6 +68,36 @@ npm run dev
 ```
 A aplicação estará disponível em `http://localhost:3000`
 
+### 📱 Visualizar pelo Celular
+
+Existem 3 formas de visualizar a aplicação pelo celular:
+
+#### Opção 1: Deploy no GitHub Pages (Mais Fácil)
+1. Faça push do código para o GitHub
+2. Vá em **Settings** > **Pages**
+3. Configure **Source** como **GitHub Actions**
+4. O deploy será automático em alguns minutos
+5. Acesse pelo celular em: `https://[seu-usuario].github.io/frontend-react`
+
+#### Opção 2: Usar Serviço de Deploy Gratuito
+- **Vercel**: Conecte o repositório GitHub em [vercel.com](https://vercel.com) - deploy automático
+- **Netlify**: Arraste a pasta `dist` após fazer build em [netlify.com/drop](https://app.netlify.com/drop)
+- **GitHub Codespaces**: Abra o repositório em Codespaces e acesse a porta pública pelo celular
+
+#### Opção 3: Build Local e Acesso na Mesma Rede
+```bash
+# Gerar build de produção
+npm run build
+
+# Servir o build localmente
+npm run preview -- --host
+
+# Acesse pelo celular usando o IP da máquina
+# Exemplo: http://192.168.1.10:4173
+```
+
+**Screenshots da aplicação funcionando estão disponíveis na descrição do PR!** 📸
+
 ### Build para Produção
 ```bash
 npm run build
