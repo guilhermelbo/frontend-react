@@ -24,8 +24,9 @@ const CreateDelivery: React.FC = () => {
       const response = await createDelivery(balanceId);
       setSuccess(`Entrega criada com sucesso! ID: ${response.delivery.id}`);
       setBalanceId('');
-    } catch (err: any) {
-      setError(err.message || 'Erro ao criar entrega');
+    } catch (err) {
+      const error = err as { message?: string };
+      setError(error.message || 'Erro ao criar entrega');
     } finally {
       setLoading(false);
     }

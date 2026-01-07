@@ -54,8 +54,9 @@ const PendingList: React.FC = () => {
       setActionSuccess(response.message);
       setShowModal(false);
       mutate();
-    } catch (err: any) {
-      setActionError(err.message || 'Erro ao executar ação');
+    } catch (err) {
+      const error = err as { message?: string };
+      setActionError(error.message || 'Erro ao executar ação');
     } finally {
       setActionLoading(null);
     }
