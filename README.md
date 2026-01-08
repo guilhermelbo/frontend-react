@@ -73,11 +73,13 @@ A aplicação estará disponível em `http://localhost:3000`
 Existem 3 formas de visualizar a aplicação pelo celular:
 
 #### Opção 1: Deploy no GitHub Pages (Mais Fácil)
-1. Faça push do código para o GitHub
-2. Vá em **Settings** > **Pages**
-3. Configure **Source** como **GitHub Actions**
-4. O deploy será automático em alguns minutos
-5. Acesse pelo celular em: `https://[seu-usuario].github.io/frontend-react`
+1. Faça merge do código para a branch `main` do GitHub
+2. O GitHub Actions irá automaticamente:
+   - Habilitar o GitHub Pages no repositório
+   - Fazer o build da aplicação
+   - Fazer o deploy para GitHub Pages
+3. Aguarde alguns minutos para o deploy completar
+4. Acesse pelo celular em: `https://guilhermelbo.github.io/frontend-react`
 
 #### Opção 2: Usar Serviço de Deploy Gratuito
 - **Vercel**: Conecte o repositório GitHub em [vercel.com](https://vercel.com) - deploy automático
