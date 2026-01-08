@@ -6,6 +6,9 @@ import PendingListPage from './pages/PendingListPage';
 import './index.css';
 
 function App() {
+  // Match the base path from vite.config.ts
+  const basename = import.meta.env.BASE_URL;
+
   return (
     <SWRConfig
       value={{
@@ -16,7 +19,7 @@ function App() {
         },
       }}
     >
-      <Router>
+      <Router basename={basename}>
         <div className="min-h-screen bg-gray-100">
           {/* Navigation Bar */}
           <nav className="bg-white shadow-lg mb-8">
