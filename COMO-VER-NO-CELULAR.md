@@ -11,15 +11,16 @@ As imagens da aplicação funcionando já estão disponíveis no Pull Request:
 
 ## Opção 2: Deploy no GitHub Pages (Recomendado) 🚀
 
-Após fazer merge do PR, a aplicação será disponibilizada automaticamente em:
+Após fazer merge do PR para a branch `main`, a aplicação será disponibilizada automaticamente em:
 
 **https://guilhermelbo.github.io/frontend-react**
 
-Para ativar:
-1. Vá em **Settings** do repositório
-2. Clique em **Pages** no menu lateral
-3. Em **Source**, selecione **GitHub Actions**
-4. O deploy acontecerá automaticamente após o merge
+O processo é completamente automático:
+1. O GitHub Actions detecta o push para a branch `main`
+2. Habilita automaticamente o GitHub Pages no repositório
+3. Faz o build da aplicação com `npm run build`
+4. Faz o deploy para GitHub Pages
+5. Em poucos minutos, a aplicação estará disponível na URL acima!
 
 ## Opção 3: Deploy Rápido com Netlify (5 minutos) ⚡
 
